@@ -40,7 +40,7 @@ copy_line:
 	jr	nz, no_clear		
 				; clear screen
 				;    HL = $3FFF, DE = $401F, BC = $0020
-				; or HL = $3?20, DE = $3???, B = $08..$01, C = $3?..$4?
+				; or HL = $3?20, DE = $3???, B = $08..$01, C = $3F
 	ld	H, D
 	ld	L, C
 	ld	[HL], B		; [$4020] = $00
