@@ -39,8 +39,10 @@ copy_line:
 	bit	6, H		; $3F = zero flag
 	jr	nz, no_clear		
 				; clear screen
-				;    HL = $3FFF, DE = $401F, BC = $0020
-				; or HL = $3?20, DE = $3???, B = $08..$01, C = $3F
+				;    HL = $3FFF -> $4020, DE = $401F, BC = $0020
+				; or HL = $3??F -> $3?3F, DE = $3??F, B  = $01..$08, C = $3F
+				; or HL = $3??F -> $3?20, DE = $3??F, BC = $0020
+
 	ld	H, D
 	ld	L, C
 	ld	[HL], B		; [$4020] = $00
