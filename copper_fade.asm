@@ -54,7 +54,7 @@ draw:
 	halt
 	pop	AF
 	jr	c, copy_line
-	db	$01		; LD BC, xxxxx
+	db	$01		; LD BC, $AFFB
 START:
 	ei
 	xor	A
