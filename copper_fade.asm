@@ -4,6 +4,7 @@
 
 copy_image	equ	0
 enable_int	equ	1
+fast		equ	0		; 0..2
 
 progStart  	equ	$C400	; 50176
 screenStart  	equ	$C500
@@ -52,7 +53,9 @@ no_clear:
 	ld	C, $20		; BC = $0020		
 	pop	HL
 draw:
+if (fast = 0)
 	halt
+endif
 	pop	AF
 	jr	c, copy_line
 	db	$0E		; LD C, $FB
@@ -70,9 +73,15 @@ endif
 	ld	HL, $57FF	; last address
 up_screen:
 	ld	C, H
+if (fast = 2 )
+	halt
+endif
 up_char:
 	ld	H, C
 	ld	B, $08
+if (fast = 1 )
+	halt
+endif
 up_in_char:
 	push	HL	
 	dec	E
