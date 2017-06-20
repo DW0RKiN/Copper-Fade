@@ -57,7 +57,7 @@ draw:
 	jr	c, copy_line
 	db	$0E		; LD C, $FB
 START:
-	xor	A		; vynulovani na zacatku skokem doprostred instrukce LC C, $FB
+	xor	A		; vynulovani na zacatku skokem doprostred instrukce LD C, $FB
 if enable_int
 	ei			; zbytecne pokud to volam z Basicu
 endif
