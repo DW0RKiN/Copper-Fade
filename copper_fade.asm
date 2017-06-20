@@ -4,7 +4,7 @@
 
 copy_image	equ	0
 enable_int	equ	1
-fast		equ	0		; 0..2
+fast		equ	0		; 0..3
 
 progStart  	equ	$C400	; 50176
 screenStart  	equ	$C500
@@ -71,6 +71,9 @@ endif
 	push	AF		; save A and not carry is stopper
 	ld	E, A		; number of created line addresses from the bottom of the stack
 	ld	HL, $57FF	; last address
+if (fast = 3 )
+	halt
+endif
 up_screen:
 	ld	C, H
 if (fast = 2 )
