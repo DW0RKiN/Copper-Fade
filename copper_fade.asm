@@ -3,6 +3,7 @@
 ; command line: pasmo -d copper_fade.asm copper_fade.bin
 
 copy_image	equ	0
+enable_int	equ	1
 
 progStart  	equ	$C400	; 50176
 screenStart  	equ	$C500
@@ -54,10 +55,12 @@ draw:
 	halt
 	pop	AF
 	jr	c, copy_line
-	db	$01		; LD BC, $AFFB
+	db	$0E		; LD C, $FB
 START:
-	ei
-	xor	A
+	xor	A		; vynulovani na zacatku skokem doprostred instrukce LC C, $FB
+if enable_int
+	ei			; zbytecne pokud to volam z Basicu
+endif
 
 ; make_stack ---------------
 	inc	A		; plus line
