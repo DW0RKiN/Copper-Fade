@@ -1,6 +1,6 @@
 ; ZX Spectrum Compo #10 (After the deadline)
 ; ver 1.3
-; command line: pasmo -d copper_fade.asm copper_fade.bin
+; command line: pasmo -d 47_bytes.asm 47_bytes.bin
 
 copy_image	equ	0
 enable_int	equ	1
